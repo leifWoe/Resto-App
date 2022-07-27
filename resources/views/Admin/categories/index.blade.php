@@ -41,6 +41,14 @@
                 <td class="py-4 px-6">
                     {{ $category->created_at }}
                 </td>
+                <td class="py-4 px-6">
+                    <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are Your sure?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                    <a href="{{ route('admin.category.edit', $category->id) }}">Edit</a>
+                </td>
             </tr>
                 @endforeach
             </tbody>
