@@ -11,8 +11,9 @@
     </div>
     <!-- INPUTS -->
     <div class="m-2 p-2">
-        <form method="POST" action="{{ route('admin.categories.update', $category->id) }}" enctype="multipart/form-data">
+        <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <!--NAME TODO middleware für was erlaubt ist-->
             <div class="mb-8">
                 <label for="name" class="mb-2 block pl-4 text-sm text-lg text-gray-900 dark:text-slate-900">Name</label>

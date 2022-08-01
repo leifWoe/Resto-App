@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryStoreRequest;
 use Illuminate\Support\Facades\Storage;
@@ -13,9 +16,9 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): View|Factory|Application
     {
         $categories=Category::all();
         return view('admin.categories.index', compact('categories'));
@@ -24,9 +27,9 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create(): View|Factory|Application
     {
         return view('admin.categories.create');
     }
@@ -34,10 +37,10 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param Request $request
+     * @return Application|Factory|View
      */
-    public function store(CategoryStoreRequest $request)
+    public function store(CategoryStoreRequest $request): View|Factory|Application
     {
         $image = $request->file('image')->store('public/categories');
 
@@ -46,7 +49,8 @@ class CategoryController extends Controller
            'description' => $request->description,
             'image' => $image
         ]);
-        return view('admin.categories.index');
+        $categories=Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -64,7 +68,7 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit(Category $category)
     {
@@ -74,7 +78,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -95,13 +99,13 @@ class CategoryController extends Controller
             'description' => $request->description,
             'image' => $image
         ]);
-        return to_route('admin.category.index');
+        return to_route('admin.categories.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -110,6 +114,6 @@ class CategoryController extends Controller
         Storage::delete($category->image);
         $category->delete();
 
-        return to_route('admin.category.index');
+        return to_route('admin.categories.index');
     }
 }

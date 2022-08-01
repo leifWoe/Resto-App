@@ -28,28 +28,32 @@
             </thead>
             <tbody>
                 @foreach($categories as $category)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ $category->name }}
-                </th>
-                <td class="py-4 px-6">
-                    <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}" class="w-16 h-16 rounded" alt="">
-                </td>
-                <td class="py-4 px-6">
-                    {{ $category->description }}
-                </td>
-                <td class="py-4 px-6">
-                    {{ $category->created_at }}
-                </td>
-                <td class="py-4 px-6">
-                    <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are Your sure?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button>
-                    </form>
-                    <a href="{{ route('admin.category.edit', $category->id) }}">Edit</a>
-                </td>
-            </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $category->name }}
+                        </th>
+                        <td class="py-4 px-6">
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}" class="w-16 h-16 rounded" alt="">
+                        </td>
+                        <td class="py-4 px-6">
+                            {{ $category->description }}
+                        </td>
+                        <td class="py-4 px-6">
+                            {{ $category->created_at }}
+                        </td>
+                        <td class="py-4 px-6">
+                            <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are Your sure?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                            <form action="{{ route('admin.categories.edit', $category->id) }}" method="POST">
+                                @csrf
+                                @method('GET')
+                                <button type="submit">Edit</button>
+                            </form>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
