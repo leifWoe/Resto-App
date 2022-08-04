@@ -7,9 +7,6 @@ use App\Http\Controllers\Admin\ManuController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\ReservationController;
 
-
-
-
 Route::get('/', function () {
     return view('welcome');
 });
