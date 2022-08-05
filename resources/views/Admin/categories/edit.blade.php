@@ -11,9 +11,9 @@
     </div>
     <!-- INPUTS -->
     <div class="m-2 p-2">
-        <form action="{{ route('admin.categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.categories.update', $category->id) }}"  enctype="multipart/form-data">
             @csrf
-            @method('GET')
+            @method('PUT')
             <!--NAME TODO middleware für was erlaubt ist-->
             <div class="mb-8">
                 <label for="name" class="mb-2 block pl-4 text-sm text-lg text-gray-900 dark:text-slate-900">Name</label>
@@ -30,6 +30,7 @@
             <!-- DESCRIPTION TODO middleware -->
             <div class="mb-6">
                 <label for="description" class="mb-2 block pl-4 text-sm text-lg text-gray-900 dark:text-slate-900">Description</label>
+                <!-- TODO textarea text start, when edited, at top left corner-->
                 <textarea rows="5" placeholder="Enter text" style="font-size:16px;" name="description" id="description" class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500">
                     {{ $category->description }}
                 </textarea>

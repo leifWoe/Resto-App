@@ -23,7 +23,6 @@ class CategoryController extends Controller
     public function index(): View|Factory|Application
     {
         $categories=Category::all();
-        $categoryName=Category::get()->name;
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -91,19 +90,19 @@ class CategoryController extends Controller
             'name' => 'required',
             'description' => 'required'
         ]);
+
         $image = $category->image;
         if ($request->hasFile('image')){
             Storage::delete($category->image);
             $image = $request->file('image')->store('public/categories');
         }
 
-
-
         $category->update([
             'name' => $request->name,
             'description' => $request->description,
             'image' => $image
         ]);
+
         $categories=Category::all();
         return to_route('admin.categories.index', compact('categories'));
     }
