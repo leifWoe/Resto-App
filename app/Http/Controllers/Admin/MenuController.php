@@ -9,15 +9,16 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use App\Http\Requests\MenuStoreRequest;
 
-class ManuController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(): View|Factory|Application
     {
         $menus = Menu::all();
         return view('admin.menus.index', compact('menus'));
@@ -37,12 +38,26 @@ class ManuController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param MenuStoreRequest $request
+     * @return Application|Factory|View
      */
-    public function store(Request $request)
+    public function store(MenuStoreRequest $request): View|Factory|Application
     {
-        //
+        $image = $request->file('image')->store('public/menus');
+
+        $menu = Menu::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $image,
+        ]);
+
+        if ($request->has('categories')){
+            $menu->categories()->attach($request->categories);
+        }
+
+        $menus=Menu::all();
+        return view('admin.menus.index' ,compact('menus'));
     }
 
     /**

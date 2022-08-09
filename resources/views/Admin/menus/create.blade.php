@@ -14,7 +14,7 @@
     <div class="m-2 p-2">
         <form method="POST" action="{{ route('admin.menus.store') }}" enctype="multipart/form-data">
         @csrf
-        <!--NAME TODO middleware für was erlaubt ist-->
+            <!-- NAME TODO middleware für was erlaubt ist-->
             <div class="mb-8">
                 <label for="name" class="mb-2 block pl-4 text-sm text-lg text-gray-900 dark:text-slate-900">Name</label>
                 <input type="text" id="name" name="name" style="font-size:16px;" class="block w-full font-semibold rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"/>
@@ -29,17 +29,24 @@
                 <label for="description" class="mb-2 block pl-4 text-sm text-lg text-gray-900 dark:text-slate-900">Description</label>
                 <textarea rows="5" placeholder="Enter text" style="font-size:16px;" name="description" id="description" class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"></textarea>
             </div>
-            <!-- CATEGORIE CHOOSE (MANY TO MANY)-->
-            <div class="mb-6">
-                <label for="description" class="mb-2 block pl-4 text-sm text-lg text-gray-900 dark:text-slate-900">Categories
-                    <div class="mt-1">
-                        <select multiple>
-                            @foreach($categories as $category)
-                                <option value="">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </label>
+            <!-- PRICE TODO middleware für was erlaubt ist-->
+            <div class="flex">
+                <div class="mb-8">
+                    <label for="price" class="mb-2 block pl-4 text-sm text-lg text-gray-900 dark:text-slate-900">Price</label>
+                    <input type="text" id="price" name="price" style="font-size:16px;" class="block w-100 font-semibold rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"/>
+                </div>
+                <!-- CATEGORIE CHOOSE (MANY TO MANY)-->
+                <div class="mb-6 ml-12">
+                    <label for="description" class="mb-2 block pl-4 text-sm text-lg text-gray-900 dark:text-slate-900">Categories
+                        <div class="mt-1 w-100 ">
+                            <select multiple style="width: 20rem">
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </label>
+                </div>
             </div>
             <!-- ADD BUTTON -->
             <div class="flex justify-end m-2 p-2">

@@ -19,7 +19,7 @@
                     Image
                 </th>
                 <th scope="col" class="py-3 px-6">
-                    Category
+                    Description
                 </th>
                 <th scope="col" class="py-3 px-6">
                     Created at
