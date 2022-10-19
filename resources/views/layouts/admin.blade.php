@@ -16,7 +16,7 @@
     <body class="font-sans antialiased">
         <div class="flex-col w-full md:flex md:flex-row md:min-h-screen">
             <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
-                <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4">
+                <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4 border-r-4">
                     <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">Resto - App</a>
                     <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
                         <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
@@ -25,7 +25,7 @@
                         </svg>
                     </button>
                 </div>
-                <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
+                <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto border-r-4 dark:bg-gray-800">
                     <x-admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
                         {{ __('Categroies') }}
                     </x-admin-nav-link>
@@ -60,7 +60,7 @@
                     </div>
                 </nav>
             </div>
-            <main class="m-2 p-8 w-full">
+            <main class="m-2 p-8 w-full dark:bg-gray-800">
                 {{ $slot }}
             </main>
         </div>
