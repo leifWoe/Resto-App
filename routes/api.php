@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Resources\CategoryResource;
+use App\Models\Category;
+use App\Http\Controllers\Api\ApiCategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +21,19 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+#show all
+Route::get('/categories', [ApiCategoryController::class, 'index']);
+
+#post one 
+Route::post('/category/store', [ApiCategoryController::class, 'store']);
+
+#show one {id}
+Route::get('/category/{id}/show', [ApiCategoryController::class, 'show']);
+
+Route::put('/category/{id}/update', [ApiCategoryController::class, 'update']);
+
+Route::delete('/category/{id}/delete', [ApiCategoryController::class, 'delete']);
+
+
