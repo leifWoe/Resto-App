@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
     <div class="flex justify-end m-2 p-2">
-        <a href="{{ route('admin.menus.create') }}" class="px-4 py-2 focus:bg-indigo-100 hover:bg-gray-900 hover:text-white rounded-lg">Create Menu</a>
+        <a href="{{ route('admin.menus.create') }}" class="px-4 py-2 focus:bg-indigo-100 hover:bg-gray-900 text-white rounded-lg">Create Menu</a>
     </div>
     <div class="overflow-x-auto relative">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

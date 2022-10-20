@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
     <div class="flex justify-end m-2 p-2">
-        <a href="{{ route('admin.categories.create') }}" class="px-4 py-2 focus:bg-indigo-100 hover:bg-gray-900 hover:text-white rounded-lg">Create Category</a>
+        <a href="{{ route('admin.categories.create') }}" class="text-white px-4 py-2 focus:bg-indigo-100 hover:bg-gray-900 rounded-lg">Create Category</a>
     </div>
     <div class="overflow-x-auto relative">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -33,7 +33,7 @@
                         <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $category->name }}
                         </th>
-                        <td class="py-4 px-6 w-40">
+                        <td class="py-4 w-40">
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}" class="w-32 h-32 rounded" alt="">
                         </td>
                         <td class="py-4 px-6">

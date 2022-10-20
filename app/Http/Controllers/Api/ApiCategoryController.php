@@ -15,7 +15,10 @@ class ApiCategoryController extends Controller
      */
     public function index()
     {
-        return Category::all();
+        return response()->json([
+            'category' => Category::all(),
+            'state' => 200,
+        ]);
     }
 
     /**
