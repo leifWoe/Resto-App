@@ -23,6 +23,7 @@ class CategoryStoreRequest extends FormRequest{
     public function messages()
     {
         return [
+            'state' => 409,
             'name.required' => 'Name is required!',
             'image.required' => 'Image is required!',
             'description.required' => 'Description is required!'

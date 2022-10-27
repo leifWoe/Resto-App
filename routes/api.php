@@ -18,13 +18,13 @@ use App\Http\Controllers\Api\ApiCategoryController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 
 #show all
-Route::get('/categories', [ApiCategoryController::class, 'index']);
+Route::get('/categories/get', [ApiCategoryController::class, 'index']);
 
 #post one 
 Route::post('/category/store', [ApiCategoryController::class, 'store']);
