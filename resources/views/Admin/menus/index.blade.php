@@ -47,7 +47,9 @@
                         </td>
                         <!-- TODO nach category filtern -->
                         <td class="py-4 px-6">
-                            {{ $menu->category }}
+                            @foreach($categories as $category)
+                                {{ $menu->categories->name }}
+                            @endforeach
                         </td>
                         <td class="py-4 px-6">
                             <form action="{{ route('admin.menus.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('Are Your sure?')">

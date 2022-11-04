@@ -39,9 +39,9 @@
                 <div class="mb-6 ml-12">
                     <label for="description" class="mb-2 block pl-4 text-lg text-gray-900 dark:text-white">Categories
                         <div class="mt-1 w-100 ">
-                            <select style="width: 20rem" class="rounded text-white bg-gray-900 border-0 mt-1">
+                            <select name="category" id="category"  style="width: 20rem" class="rounded text-white bg-gray-900 border-0 mt-1">
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" >{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>

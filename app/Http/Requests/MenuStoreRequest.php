@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MenuStoreRequest extends FormRequest
 {
-    /**
+    /** 
      * Determine if the user is authorized to make this request.
      *
      * @return bool
@@ -27,7 +27,7 @@ class MenuStoreRequest extends FormRequest
             'name' => ['required'],
             'image' => ['required', 'image'],
             'price' => ['required'],
-            'description' => ['required']
+            'description' => ['required'],
         ];
     }
 

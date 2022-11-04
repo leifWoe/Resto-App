@@ -34,6 +34,6 @@ Route::get('/category/{id}/show', [ApiCategoryController::class, 'show']);
 
 Route::put('/category/{id}/update', [ApiCategoryController::class, 'update']);
 
-Route::delete('/category/{id}/delete', [ApiCategoryController::class, 'delete']);
+Route::delete('/category/{id}/delete', [ApiCategoryController::class, 'destroy']);
 
 

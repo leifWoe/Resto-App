@@ -20,8 +20,15 @@ class MenuController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $menus = Menu::all();
-        return view('admin.menus.index', compact('menus'));
+        $menus = Menu::has('categories')->get();
+        
+        /*$menus = Menu::whereHas('categories', function($q){
+            $q->where('menus_id');
+        })->get();*/
+        //dd($menus);
+        $categories = Category::with('menus')->get();
+        //dd($categories);
+        return view('admin.menus.index', compact('menus', 'categories'));
     }
 
     /**
@@ -44,20 +51,21 @@ class MenuController extends Controller
     public function store(MenuStoreRequest $request): View|Factory|Application
     {
         $image = $request->file('image')->store('public/menus');
-
+        $categoriesId = $request->get('category');
+        
         $menu = Menu::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
             'image' => $image,
+            'category' => $categoriesId,
         ]);
-
-        if ($request->has('categories')){
-            $menu->categories()->attach($request->categories);
-        }
-
-        $menus=Menu::all();
-        return view('admin.menus.index' ,compact('menus'));
+        
+        $menu->categories()->attach($categoriesId);
+        
+        $menus = Menu::all();
+        $categories = Category::all();
+        return view('admin.menus.index', compact('menus', 'categories'));
     }
 
     /**
@@ -98,10 +106,14 @@ class MenuController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Menu $menu)
     {
-        //
+        $menu->delete();
+
+        return to_route('admin.menus.index');
+
+        //TODO cascade delte to pivot table
     }
 }

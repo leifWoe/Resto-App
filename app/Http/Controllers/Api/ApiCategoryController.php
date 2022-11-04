@@ -73,5 +73,10 @@ class ApiCategoryController extends Controller
     public function destroy($id)
     {
         Category::findOrFail($id)->delete();
+        return response()->json([
+            'massage' => "Category gelöscht!",
+            'id' => $id,
+            'state' => 200,
+        ]);
     }
 }

@@ -26,7 +26,7 @@ class StoreApiCategoryRequest extends FormRequest
         return [
             'name' => 'required|max:30',
             'description' => 'required|max:500',
-            'image' => 'nullable|image' //image rausnehmen um zu testen
+            'image' => 'required|image' //image rausnehmen um zu testen
         ];
     }
 }

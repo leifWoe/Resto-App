@@ -15,7 +15,7 @@
             @csrf
             <!--NAME TODO middleware für was erlaubt ist-->
             <div class="mb-8">
-                <label for="name" class="mb-2 block pl-4  text-lg text-gray-900 dark:text-slate-900">Name</label>
+                <label for="name" class="mb-2 block pl-4  text-lg text-gray-900 dark:text-white">Name</label>
                 <input type="text" id="name" name="name" style="font-size:16px;" class="block w-full font-semibold rounded-lg border border-gray-300 bg-gray-50 p-2 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-xs"/>
             </div>
             <!-- PICTURE TODO middleware für was für bilder erlaubt sind-->
@@ -25,7 +25,7 @@
             </div>
             <!-- DESCRIPTION TODO middleware -->
             <div class="mb-6">
-                <label for="description" class="mb-2 block pl-4  text-lg text-gray-900 dark:text-slate-900">Description</label>
+                <label for="description" class="mb-2 block pl-4  text-lg text-gray-900 dark:text-white">Description</label>
                 <textarea rows="5" placeholder="Enter text" style="font-size:16px;" name="description" id="description" class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5  text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"></textarea>
             </div>
             <!-- ADD BUTTON -->
