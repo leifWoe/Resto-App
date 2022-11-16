@@ -38,7 +38,6 @@ class MenuStoreRequest extends FormRequest
             'image.required' => 'Image is required!',
             'price.required' => 'Price is required!',
             'description.required' => 'Description is required!',
-            'category.required' => 'Category is required!',
         ];
     }
 }

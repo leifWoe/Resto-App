@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\MenuStoreRequest;
+use Termwind\Components\Dd;
 
 class MenuController extends Controller
 {
@@ -20,17 +21,10 @@ class MenuController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $menus = Menu::has('categories')->get();
-        
-        /*$menus = Menu::whereHas('categories', function($q){
-            $q->where('menus_id');
-        })->get();*/
-        //dd($menus);
-        $categories = Category::with('menus')->get();
-        //dd($categories);
-        return view('admin.menus.index', compact('menus', 'categories'));
+        $menus = Menu::with('categories')->get();
+        return view('admin.menus.index', compact('menus'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -38,10 +32,10 @@ class MenuController extends Controller
      */
     public function create(): View|Factory|Application
     {
-        $categories=Category::all();
+        $categories = Category::all();
         return view('admin.menus.create', compact('categories'));
     }
-
+        
     /**
      * Store a newly created resource in storage.
      *

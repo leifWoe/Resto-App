@@ -30,7 +30,7 @@
                         {{ __('Categroies') }}
                     </x-admin-nav-link>
                     <x-admin-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.index')">
-                        {{ __('Menues') }}
+                        {{ __('Menus') }}
                     </x-admin-nav-link>
                     <x-admin-nav-link :href="route('admin.tables.index')" :active="request()->routeIs('admin.tables.index')">
                         {{ __('Tables') }}
