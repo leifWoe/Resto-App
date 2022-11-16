@@ -45,17 +45,19 @@
                         <td class="py-4 px-6">
                             {{ $menu->price }}
                         </td>
-                        <!-- TODO nach category filtern -->
+                        <!-- TODO: nach category filtern -->
                         <td class="py-4 px-6">
-                            @foreach($categories as $category)
-                                {{ $menu->categories->name }}
+                            @foreach($menu->categories as $category)
+                                {{ $category->name }}
                             @endforeach
                         </td>
+                        <!-- TODO: delete cascade -->
+                        <!-- TODO: mehrere categories möglich -->
                         <td class="py-4 px-6">
                             <form action="{{ route('admin.menus.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('Are Your sure?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Delete</button>
+                                <button type="submit" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Delete</button> 
                             </form>
                             <form method="POST" action="{{ route('admin.menus.edit', $menu->id) }}" method="POST">
                                 @csrf
